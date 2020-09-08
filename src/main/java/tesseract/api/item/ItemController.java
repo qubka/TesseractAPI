@@ -31,7 +31,7 @@ public class ItemController<T, N extends IItemNode<T>> extends Controller<IItemP
      *
      * @param dim The dimension id.
      */
-    public ItemController(int dim) {
+    public ItemController(Object dim) {
         super(dim);
         holders.defaultReturnValue(-1);
     }

@@ -31,7 +31,7 @@ public class FEController extends Controller<IFECable, IFENode> {
 
      * @param dim The dimension id.
      */
-    public FEController(int dim) {
+    public FEController(Object dim) {
         super(dim);
     }
 

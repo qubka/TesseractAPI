@@ -11,7 +11,7 @@ public interface IGTEvent {
      * @param pos The node position.
      * @param voltage The current voltage.
      */
-    default void onNodeOverVoltage(int dim, long pos, int voltage) {
+    default void onNodeOverVoltage(Object dim, long pos, int voltage) {
         //NOOP
     }
 
@@ -21,7 +21,7 @@ public interface IGTEvent {
      * @param pos The cable position.
      * @param voltage The current voltage.
      */
-    default void onCableOverVoltage(int dim, long pos, int voltage) {
+    default void onCableOverVoltage(Object dim, long pos, int voltage) {
         //NOOP
     }
 
@@ -31,7 +31,7 @@ public interface IGTEvent {
      * @param pos The cable position.
      * @param amperage The current amperage.
      */
-    default void onCableOverAmperage(int dim, long pos, int amperage) {
+    default void onCableOverAmperage(Object dim, long pos, int amperage) {
         //NOOP
     }
 }

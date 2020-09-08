@@ -11,7 +11,7 @@ public interface IFluidEvent<T> {
      * @param pos The pipe position.
      * @param pressure The current pressure.
      */
-    default void onPipeOverPressure(int dim, long pos, int pressure) {
+    default void onPipeOverPressure(Object dim, long pos, int pressure) {
         //NOOP
     }
 
@@ -21,7 +21,7 @@ public interface IFluidEvent<T> {
      * @param pos The pipe position.
      * @param capacity The current capacity.
      */
-    default void onPipeOverCapacity(int dim, long pos, int capacity) {
+    default void onPipeOverCapacity(Object dim, long pos, int capacity) {
         //NOOP
     }
 
@@ -31,7 +31,7 @@ public interface IFluidEvent<T> {
      * @param pos The pipe position.
      * @param temperature The current temperature.
      */
-    default void onPipeOverTemp(int dim, long pos, int temperature) {
+    default void onPipeOverTemp(Object dim, long pos, int temperature) {
         //NOOP
     }
 
@@ -41,7 +41,7 @@ public interface IFluidEvent<T> {
      * @param pos The pipe position.
      * @param fluid FluidData holding the Fluid to be queried.
      */
-    default void onPipeGasLeak(int dim, long pos, FluidData<T> fluid) {
+    default void onPipeGasLeak(Object dim, long pos, FluidData<T> fluid) {
         //NOOP
     }
 }

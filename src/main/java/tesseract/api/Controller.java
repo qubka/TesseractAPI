@@ -9,7 +9,7 @@ import tesseract.graph.INode;
 abstract public class Controller<C extends IConnectable, N extends IConnectable> implements ITickingController {
 
     protected int tick;
-    protected final int dim;
+    protected final Object dim;
     protected Group<C, N> group;
 
     /**
@@ -17,7 +17,7 @@ abstract public class Controller<C extends IConnectable, N extends IConnectable>
      *
      * @param dim The dimension id.
      */
-    protected Controller(int dim) {
+    protected Controller(Object dim) {
         this.dim = dim;
     }
 

@@ -30,7 +30,7 @@ public class GTController extends Controller<IGTCable, IGTNode> implements IGTEv
 
      * @param dim The dimension id.
      */
-    public GTController(int dim) {
+    public GTController(Object dim) {
         super(dim);
     }
 

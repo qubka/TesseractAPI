@@ -12,22 +12,22 @@ public class Energy extends GTController {
      *
      * @param dim The dimension id.
      */
-    public Energy(int dim) {
+    public Energy(Object dim) {
         super(dim);
     }
 
     @Override
-    public void onNodeOverVoltage(int dim, long pos, int voltage) {
+    public void onNodeOverVoltage(Object dim, long pos, int voltage) {
         Utils.getServerWorld(dim).ifPresent(w -> Utils.createExplosion(w, BlockPos.fromLong(pos), 4.0F, Explosion.Mode.BREAK));
     }
 
     @Override
-    public void onCableOverAmperage(int dim, long pos, int amperage) {
+    public void onCableOverAmperage(Object dim, long pos, int amperage) {
         Utils.getServerWorld(dim).ifPresent(w -> Utils.createFireAround(w, BlockPos.fromLong(pos)));
     }
 
     @Override
-    public void onCableOverVoltage(int dim, long pos, int voltage) {
+    public void onCableOverVoltage(Object dim, long pos, int voltage) {
         Utils.getServerWorld(dim).ifPresent(w -> Utils.createFireAround(w, BlockPos.fromLong(pos)));
     }
 }

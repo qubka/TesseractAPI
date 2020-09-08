@@ -5,9 +5,10 @@
   "description": "Powerful framework for energy, item, and fluid transport",
   "version": "${version}",
   "mcversion": "${mcversion}",
+
   "url": "",
   "updateUrl": "",
-  "authorList": ["coderbot16", "qubka", "repolainen", "mitchej123", "Muramasa"],
+  "authorList": ["coderbot16", "qubka", "repolainen"],
   "credits": "",
   "logoFile": "",
   "screenshots": [],

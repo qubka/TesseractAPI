@@ -33,7 +33,7 @@ public class FluidController<T, N extends IFluidNode<T>> extends Controller<IFlu
      *
      * @param dim The dimension id.
      */
-    public FluidController(int dim) {
+    public FluidController(Object dim) {
         super(dim);
     }
 

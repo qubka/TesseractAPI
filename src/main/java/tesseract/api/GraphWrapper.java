@@ -1,22 +1,24 @@
 package tesseract.api;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import tesseract.graph.*;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import tesseract.graph.Cache;
+import tesseract.graph.Graph;
+import tesseract.graph.Group;
 
-import java.util.function.IntFunction;
+import java.util.function.Function;
 
 public class GraphWrapper<C extends IConnectable, N extends IConnectable> {
 
-    protected final Int2ObjectMap<Graph<C, N>> graph = new Int2ObjectOpenHashMap<>();
-    protected final IntFunction<Controller<C, N>> supplier;
+    protected final Object2ObjectMap<Object, Graph<C, N>> graph = new Object2ObjectOpenHashMap<>();
+    protected final Function<Object, Controller<C, N>> supplier;
 
     /**
      * Creates a graph wrapper.
      *
      * @param supplier The default controller supplier.
      */
-    public GraphWrapper(IntFunction<Controller<C, N>> supplier) {
+    public GraphWrapper(Function<Object, Controller<C, N>> supplier) {
         this.supplier = supplier;
     }
 
@@ -28,7 +30,7 @@ public class GraphWrapper<C extends IConnectable, N extends IConnectable> {
      * @param node The node object.
      * @param controller The controller for the node
      */
-    public void registerNode(int dim, long pos, N node, Controller<C, N> controller) {
+    public void registerNode(Object dim, long pos, N node, Controller<C, N> controller) {
         getGraph(dim).addNode(pos, new Cache<>(node), controller);
     }
 
@@ -39,7 +41,7 @@ public class GraphWrapper<C extends IConnectable, N extends IConnectable> {
      * @param pos The position at which the node will be added.
      * @param node The node object.
      */
-    public void registerNode(int dim, long pos, N node) {
+    public void registerNode(Object dim, long pos, N node) {
         getGraph(dim).addNode(pos, new Cache<>(node), supplier.apply(dim));
     }
 
@@ -51,7 +53,7 @@ public class GraphWrapper<C extends IConnectable, N extends IConnectable> {
      * @param connector The connector object.
      * @param controller The controller for the node
      */
-    public void registerConnector(int dim, long pos, C connector, Controller<C, N> controller) {
+    public void registerConnector(Object dim, long pos, C connector, Controller<C, N> controller) {
         getGraph(dim).addConnector(pos, new Cache<>(connector), controller);
     }
 
@@ -62,7 +64,7 @@ public class GraphWrapper<C extends IConnectable, N extends IConnectable> {
      * @param pos The position at which the node will be added.
      * @param connector The connector object.
      */
-    public void registerConnector(int dim, long pos, C connector) {
+    public void registerConnector(Object dim, long pos, C connector) {
         getGraph(dim).addConnector(pos, new Cache<>(connector), supplier.apply(dim));
     }
 
@@ -72,7 +74,7 @@ public class GraphWrapper<C extends IConnectable, N extends IConnectable> {
      * @param dim The dimension id.
      * @return The graph instance for the world.
      */
-    public Graph<C, N> getGraph(int dim) {
+    public Graph<C, N> getGraph(Object dim) {
         return graph.computeIfAbsent(dim, k -> new Graph<>());
     }
 
@@ -83,7 +85,7 @@ public class GraphWrapper<C extends IConnectable, N extends IConnectable> {
      * @param pos The position at which the electric component is exist.
      * @return The controller object. (Can be null)
      */
-    public ITickingController getController(int dim, long pos) {
+    public ITickingController getController(Object dim, long pos) {
         Group<?, ?> group = getGraph(dim).getGroupAt(pos);
         return group != null ? group.getController() : null;
     }
@@ -94,7 +96,7 @@ public class GraphWrapper<C extends IConnectable, N extends IConnectable> {
      * @param dim The dimension id where the electric component will be added.
      * @param pos The position at which the electric component will be added.
      */
-    public void remove(int dim, long pos) {
+    public void remove(Object dim, long pos) {
         getGraph(dim).removeAt(pos);
     }
 }
