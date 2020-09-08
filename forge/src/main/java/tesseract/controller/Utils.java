@@ -3,10 +3,10 @@ package tesseract.controller;
 import net.minecraft.block.Blocks;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
-import net.minecraft.util.RegistryKey;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 import javax.annotation.Nullable;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public class Utils {
     public static Optional<World> getServerWorld(Object dim) {
-        return Optional.ofNullable(ServerLifecycleHooks.getCurrentServer().getWorld((RegistryKey<World>)dim));
+        return Optional.ofNullable(ServerLifecycleHooks.getCurrentServer().getWorld((DimensionType) dim));
     }
 
     public static void createExplosion(@Nullable World world, BlockPos pos, float explosionRadius, Explosion.Mode modeIn) {

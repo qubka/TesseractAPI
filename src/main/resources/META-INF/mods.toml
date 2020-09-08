@@ -1,7 +1,7 @@
 modLoader="javafml"
 #loaderVersion="[${loader_version},)"
 license="GPLv3"
-loaderVersion="[26,)"
+loaderVersion="[31,)"
 issueTrackerURL="https://github.com/GregTech-Intergalactical/TesseractAPI/issues"
 
 [[mods]]
@@ -18,13 +18,13 @@ description='''Powerful framework for energy, item, and fluid transport'''
     modId="forge"
     mandatory=true
     #versionRange="[${forge_version},)"
-    versionRange="[33,)"
+    versionRange="[31,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.tesseract]]
     modId="minecraft"
     mandatory=true
     #versionRange="[${minecraft_version}]"
-    versionRange="[1.16.2,)"
+    versionRange="1.15.2"
     ordering="NONE"
     side="BOTH"
